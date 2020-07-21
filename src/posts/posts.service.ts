@@ -18,6 +18,10 @@ export class PostsService {
         return this.postsRepository.findOne(id);
     }
 
+    create(post: Post) {
+        this.postsRepository.create(post);
+    }
+
     async remove(id: string): Promise<void> {
         await this.postsRepository.delete(id);
     }
