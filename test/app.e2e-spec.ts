@@ -20,6 +20,6 @@ describe('AppController (e2e)', () => {
       .post('/users')
       .set('Content-Type', 'application/json')
       .send({ firstName: 'John', lastName: 'Doe', password: 'abcdefg' })
-      .expect(200);
+      .expect(201);
   });
 });
