@@ -14,16 +14,22 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column({ default: true })
-  isActive: boolean;
-
-  @Column({ default: false })
-  isConfirmed: boolean;
+  @Column()
+  email: string;
 
   @Column()
+  username: string;
+
+  @Column({ default: true, select: false })
+  isActive: boolean;
+
+  @Column({ default: false, select: false })
+  isConfirmed: boolean;
+
+  @Column({ select: false })
   password: string;
 
-  @Column("simple-array")
+  @Column("simple-array", { select: false })
   refreshTokens: string[];
 
   @OneToMany(type => Post, post => post.user)

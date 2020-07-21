@@ -20,11 +20,24 @@ export class UsersService {
     return this.usersRepository.findOne(id, { relations: ['posts'] });
   }
 
+  async findOneByUsername(username: string): Promise<User> {
+    const user = await this.usersRepository
+      .createQueryBuilder('user')
+      .where('user.username = :username', { username })
+      .addSelect('user.password')
+      .addSelect('user.isActive')
+      .addSelect('user.isConfirmed')
+      .getOne();
+    return user;
+  }
+
   async create(createUserDto: CreateUserDto): Promise<User> {
     const user = new User();
-    const { firstName, lastName, password } = createUserDto;
+    const { firstName, lastName, username, email, password } = createUserDto;
     user.firstName = firstName;
     user.lastName = lastName;
+    user.username = username;
+    user.email = email;
     user.refreshTokens = [];
     user.password = await bcrypt.hash(password, 10);
     return this.usersRepository.save(user);
