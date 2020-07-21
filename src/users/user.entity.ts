@@ -1,6 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Post } from '../posts/post.entity';
-import { CreateUserDto } from './dto/create-user.dto';
 
 @Entity()
 export class User {
