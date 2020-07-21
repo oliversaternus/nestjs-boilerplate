@@ -16,7 +16,7 @@ export class UsersService {
   }
 
   findOne(id: string): Promise<User> {
-    return this.usersRepository.findOne(id);
+    return this.usersRepository.findOne(id, { relations: ['posts'] });
   }
 
   create(createUserDto: CreateUserDto): Promise<User> {
