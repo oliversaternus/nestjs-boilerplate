@@ -15,10 +15,11 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('/users (POST)', () => {
     return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+      .post('/users')
+      .set('Content-Type', 'application/json')
+      .send({ firstName: 'John', lastName: 'Doe', password: 'abcdefg' })
+      .expect(200);
   });
 });
