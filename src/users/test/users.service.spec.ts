@@ -1,24 +1,24 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PostsService } from './posts.service';
-import { Repository } from 'typeorm';
+import { UsersService } from '../users.service';
 import { createMock } from '@golevelup/nestjs-testing';
-import { Post } from './post.entity';
+import { Repository } from 'typeorm';
+import { User } from '../user.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
-describe('PostsService', () => {
-  let service: PostsService;
+describe('UsersService', () => {
+  let service: UsersService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        PostsService,
+        UsersService,
         {
-          provide: getRepositoryToken(Post),
-          useValue: createMock<Repository<Post>>(),
+          provide: getRepositoryToken(User),
+          useValue: createMock<Repository<User>>(),
         }],
     }).compile();
 
-    service = module.get<PostsService>(PostsService);
+    service = module.get<UsersService>(UsersService);
   });
 
   it('should be defined', () => {
