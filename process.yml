@@ -1,0 +1,6 @@
+apps:
+  - script: ./dist/main.js
+    name: "api"
+    instances: max
+    exec_mode: cluster
+    watch: true
