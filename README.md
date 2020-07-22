@@ -36,7 +36,7 @@ $ npm run test:cov
 
 ## Deploy
 
-## Deploy with PM2 only
+### Deploy with PM2 only
 This is the recommended way to deploy the app, because it's more lightweight.
 More infos about PM2 [here](https://github.com/nestjs/nest).
 
@@ -50,7 +50,7 @@ $ npm run build
 # run app
 $ pm2 start process.yml
 ```
-## Deploy with Docker
+### Deploy with Docker
 
 ```bash
 # build image
